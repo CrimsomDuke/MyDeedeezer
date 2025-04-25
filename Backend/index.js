@@ -5,12 +5,19 @@ const fileUpload = require('express-fileupload');
 const app = express();
 const port = 3000;
 const db = require("./models/")
+const cors = require('cors')
 
 app.use(bodyParser.urlencoded({ extended : false }))
 
 app.use(fileUpload({
     limits : { fileSize: 50 * 1024 * 1024 }
 }))
+
+let corsOptions = {
+    origin : ['http://localhost:5173', 'http://127.0.0.1:5173'],
+ }
+
+ app.use(cors(corsOptions))
 
 db.sequelizeInst.sync({}).then(() => {
     console.log("Database Ready for the action")
