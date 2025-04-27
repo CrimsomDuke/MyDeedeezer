@@ -61,7 +61,7 @@ exports.postSongCreate = async (req, res) => {
             return res.status(500).json({ error: { message: "Error saving song file" } });
         }
 
-        songSaved.file_path = filePath;
+        songSaved.file_path = fileName;
         await songSaved.save();
 
         return res.status(201).json({ message : "Song created successfully", song: songSaved });
@@ -99,7 +99,7 @@ exports.putSongUpdate = async (req, res) => {
         if (err) {
             return res.status(500).json({ error: { message: "Error saving song file" } });
         }
-        song.file_path = filePath;
+        song.file_path = fileName;
         await song.save();
 
         return res.status(200).json(song);

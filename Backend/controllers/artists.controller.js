@@ -73,7 +73,7 @@ exports.postArtistCreate = async (req, res) => {
         }
 
         //update the artist with the image
-        artistSaved.picture_path = thePath;
+        artistSaved.picture_path = fileName;
         await db.Artists.update({
             picture_path: artistSaved.picture_path
         }, { where : { id : artistSaved.id}});
@@ -116,7 +116,7 @@ exports.putArtistUpdate = async (req, res) => {
         }
 
         //update the artist with the image
-        artist.picture_path = thePath;
+        artist.picture_path = fileName;
 
         await artist.save();
         return res.status(200).json({ message: "Artist created successfully", artist: artist });

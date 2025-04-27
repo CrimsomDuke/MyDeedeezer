@@ -18,12 +18,15 @@ const GenresListView = () => {
 
     useEffect(() => {
         fetchGenres();
-    })
+    }, [])
 
     return (
         <>
             <CustomNavbar />
             <Container className="mt-3">
+                <div>
+                    <a href="/admin/genres/form" className="btn btn-success m-3">Crear Genero</a>
+                </div>
                 <Row>
                     <Col>
                         <Table striped bordered size="sm" responsive>
@@ -39,7 +42,7 @@ const GenresListView = () => {
                                     <tr>
                                         <td>{genresList.id}</td>
                                         <td>{genresList.name}</td>
-                                        <td><Link className="btn btn-primary" to={`/admin/genres/${genresList.id}`}>Editar</Link></td>
+                                        <td><a className="btn btn-primary" href={`/admin/genres/form/${genresList.id}`}>Editar</a></td>
                                     </tr>
                                 ))}
                             </tbody>

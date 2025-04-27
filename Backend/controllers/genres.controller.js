@@ -54,7 +54,7 @@ exports.postGenreCreate = async (req, res) => {
             return res.status(500).json({ message: "Error saving the image" })
         }
 
-        genreSaved.banner_path = thePath;
+        genreSaved.banner_path = fileName;
         await db.Genres.update({
             banner_path: genreSaved.banner_path
         }, {
@@ -98,7 +98,7 @@ exports.putGenreUpdate = async (req, res) => {
             return res.status(500).json({ message: "Error saving the image" })
         }
         //update the genre with the iamge
-        genreSaved.banner_path = thePath;
+        genreSaved.banner_path = fileName;
 
         await genreSaved.save();
     })

@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
+const path = require('path');
 
 const app = express();
 const port = 3000;
@@ -18,6 +19,7 @@ let corsOptions = {
  }
 
  app.use(cors(corsOptions))
+ app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 db.sequelizeInst.sync({}).then(() => {
     console.log("Database Ready for the action")

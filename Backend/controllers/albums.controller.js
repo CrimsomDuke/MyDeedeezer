@@ -68,7 +68,7 @@ exports.postAlbumCreate = async (req, res) => {
             return res.status(500).json({ error: { message: 'Error saving picture' } });
         }
 
-        albumSaved.picture_path = thePath;
+        albumSaved.picture_path = fileName;
         await albumSaved.save();
         
         return res.status(201).json(albumSaved);
@@ -105,7 +105,7 @@ exports.putAlbumUpdate = async (req, res) => {
             return res.status(500).json({ error: { message: 'Error saving picture' } });
         }
 
-        album.picture_path = thePath;
+        album.picture_path = fileName;
         await album.save();
 
         return res.status(200).json(album);
