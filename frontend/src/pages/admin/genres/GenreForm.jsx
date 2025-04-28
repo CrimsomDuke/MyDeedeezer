@@ -111,7 +111,7 @@ const GenreCreateView = () => {
             <CustomNavbar />
             <Container className="mt-5">
                 <div>
-                    <a href="/" className="btn btn-secondary m-2">Get back to List</a>
+                    <a href="/admin" className="btn btn-secondary m-2">Get back to List</a>
                 </div>
                 <Card>
                     <Card.Body className="p-4">

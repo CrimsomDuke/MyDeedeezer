@@ -1,19 +1,17 @@
-import { Container, Row, Table, Col } from "react-bootstrap"
-import CustomNavbar from "../../../components/admin/CustomNavbar"
-import { Link } from "react-router"
-import 'bootstrap/dist/css/bootstrap.min.css'
-import { useEffect, useState } from "react"
-import  global_vars  from '../../../config/global_vars.js'
 
+import { useState, useEffect } from "react";
+import global_vars from "../../../config/global_vars";
+import CustomNavbar from "../../../components/admin/CustomNavbar";
+import { Container, Row, Table, Col } from "react-bootstrap";
 
-const GenresListView = () => {
+const ArtistsListView = () => {
 
-    const [genresList, setGenresList] = useState([]);
+    const [artistsList, setArtistsList] = useState([]);
 
     const fetchGenres = async () => {
-        const response = await fetch(`${global_vars.api_url}/genres`);
+        const response = await fetch(`${global_vars.api_url}/artists`);
         const data = await response.json();
-        setGenresList(data);
+        setArtistsList(data);
     }
 
     useEffect(() => {
@@ -25,7 +23,7 @@ const GenresListView = () => {
             <CustomNavbar />
             <Container className="mt-3">
                 <div>
-                    <a href="/admin/genres/form" className="btn btn-success m-3">Crear genero</a>
+                    <a href="/admin/artists/form" className="btn btn-success m-3">Crear Artista</a>
                 </div>
                 <Row>
                     <Col>
@@ -34,15 +32,15 @@ const GenresListView = () => {
                                 <tr>
                                     <th scope="col">Id</th>
                                     <th scope="col">Nombre</th>
-                                    <th scope="col">Edit</th>
+                                    <th scope="col">Editar</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {genresList.map((genresList) => (
+                                {artistsList.map((genresList) => (
                                     <tr>
                                         <td>{genresList.id}</td>
                                         <td>{genresList.name}</td>
-                                        <td><a className="btn btn-primary" href={`/admin/genres/form/${genresList.id}`}>Editar</a></td>
+                                        <td><a className="btn btn-primary" href={`/admin/artists/form/${genresList.id}`}>Editar</a></td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -54,4 +52,4 @@ const GenresListView = () => {
     )
 }
 
-export default GenresListView
+export default ArtistsListView;
