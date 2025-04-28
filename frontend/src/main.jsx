@@ -9,6 +9,8 @@ import ArtistsListView from './pages/admin/artists/ArtistsListView.jsx'
 import ArtistForm from './pages/admin/artists/ArtistForm.jsx'
 import AlbumsListView from './pages/admin/albums/AlbumsListView.jsx'
 import AlbumsForm from './pages/admin/albums/AlbumForm.jsx';
+import SongsListView from './pages/admin/songs/SongsListView.jsx';
+import SongsForm from './pages/admin/songs/SongsForm.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -23,6 +25,9 @@ createRoot(document.getElementById('root')).render(
         <Route path="/admin/albums" element={<AlbumsListView />} />
         <Route path="/admin/albums/form" element={<AlbumsForm />} />
         <Route path="/admin/albums/form/:id" element={<AlbumsForm />} />
+        <Route path="/admin/songs" element={<SongsListView />} />
+        <Route path="/admin/songs/form" element={<SongsForm />} />
+        <Route path="/admin/songs/form/:id" element={<SongsForm />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

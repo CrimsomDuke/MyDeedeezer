@@ -3,6 +3,16 @@ const db = require("../models/");
 const global_vars = require("../config/global.vars");
 const path = require("path");
 
+
+exports.getAllSongs = async (req, res) => {
+    const songs = await db.Songs.findAll();
+    if (songs.length === 0) {
+        return res.status(404).json({ message: "No songs found" });
+    }
+    return res.status(200).json(songs);
+
+}
+
 exports.getSongById = async (req, res) => {
     const songId = req.params.id;
     const song = await db.Songs.findByPk(songId);

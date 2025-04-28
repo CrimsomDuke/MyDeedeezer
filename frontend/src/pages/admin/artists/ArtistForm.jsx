@@ -44,7 +44,11 @@ const ArtistForm = () => {
         const formData = new FormData();
         formData.append("name", artistName);
         //En caso de create y no se haya seleccionado un genero, se selecciona el primero de la lista
-        formData.append("genre_id", artistGenreId)
+        if(artistGenreId != 0){
+            formData.append("genre_id", artistGenreId);
+        }else{
+            formData.append("genre_id", genresDataSource[0].id);
+        }
         //Agregar el banner solo si es un archivo
         if (artistPicture instanceof File) {
             formData.append("picture", artistPicture);
@@ -124,10 +128,6 @@ const ArtistForm = () => {
         console.log(data);
 
         setGenresDataSource(data);
-        //set default genre id to the first one in the list
-        if(artistGenreId === 0){
-            setArtistGenreId(data[0].id);
-        }
     }
 
     return (

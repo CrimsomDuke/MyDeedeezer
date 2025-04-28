@@ -44,7 +44,11 @@ const AlbumsForm = () => {
         const formData = new FormData();
         formData.append("album_name", albumsName);
         //En caso de create y no se haya seleccionado un genero, se selecciona el primero de la lista
-        formData.append("artist_id", albumsArtistId)
+        if(albumsArtistId != 0){
+            formData.append("artist_id", albumsArtistId);
+        }else{
+            formData.append("artist_id", artistsDataSource[0].id);
+        }
         //Agregar el banner solo si es un archivo
         if (albumsPicture instanceof File) {
             formData.append("picture", albumsPicture);
@@ -116,7 +120,7 @@ const AlbumsForm = () => {
     const fetchArtistsForDataSource = async () => {
         const response = await fetch(`${global_vars.api_url}/artists`, {
             method: 'GET',
-            headers : {
+            headers: {
                 'Content-Type': 'application/json',
             }
         })
@@ -124,10 +128,6 @@ const AlbumsForm = () => {
         console.log(data);
 
         setArtistsDataSource(data);
-        //set default Artist id to the first one in the list
-        if(albumsArtistId === 0){
-            setAlbumsArtistId(data[0].id);
-        }
     }
 
     return (
@@ -163,7 +163,7 @@ const AlbumsForm = () => {
                                     </Form.Group>
                                     <Form.Group style={{ display: "flex", justifyContent: "space-between" }}>
                                         <button class="btn btn-success m-3">Guardar</button>
-                                        { (id) && (
+                                        {(id) && (
                                             <button class="btn btn-danger m-3" onClick={() => handleDelete()} type="button">Delete</button>
                                         )}
                                     </Form.Group>
