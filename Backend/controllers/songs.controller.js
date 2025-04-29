@@ -15,7 +15,14 @@ exports.getAllSongs = async (req, res) => {
 
 exports.getSongById = async (req, res) => {
     const songId = req.params.id;
-    const song = await db.Songs.findByPk(songId);
+    const song = await db.Songs.findByPk(songId, {
+        include: [{
+            association: 'albums',
+            include: [{
+                association: 'artists'
+            }]
+        }]
+    });
 
     if (!song) {
         return res.status(404).json({ message: "Song not found" });

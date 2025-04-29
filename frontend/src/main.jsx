@@ -11,11 +11,15 @@ import AlbumsListView from './pages/admin/albums/AlbumsListView.jsx'
 import AlbumsForm from './pages/admin/albums/AlbumForm.jsx';
 import SongsListView from './pages/admin/songs/SongsListView.jsx';
 import SongsForm from './pages/admin/songs/SongsForm.jsx';
+import MainPage from './pages/main/MainPage.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
+
+        <Route path="/" element={<MainPage />} />
+        
         <Route path="/admin" element={<GenresListView />} />
         <Route path="/admin/genres/form" element={<GenreFormView />} />
         <Route path="/admin/genres/form/:id" element={<GenreFormView />} />
