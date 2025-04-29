@@ -6,6 +6,7 @@ const global_vars = {
     albums_files_path : "http://localhost:3000/uploads/images/albums/",
     songs_files_path : "http://localhost:3000/uploads/songs/",
 
+    current_song_url : null,
 }
 
 export default global_vars;
