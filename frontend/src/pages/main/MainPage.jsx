@@ -6,22 +6,22 @@ import GenresView from '../../components/main/GenresView';'../../components/main
 
 const MainPage = () => {
 
-    const [currentSongUrl, setCurrentSongUrl] = useState(null);
+    const [currentSongId, setCurrentSongId] = useState(null);
 
     const global_state = {
-        current_song_url: currentSongUrl,
-        setCurrentSongUrl: setCurrentSongUrl,
+        currentSongId: currentSongId,
+        setCurrentSongId: setCurrentSongId,
     }
 
     useEffect(() => {
-        setCurrentSongUrl(global_state.current_song_url)
-    }, [])
+        setCurrentSongId(currentSongId)
+    }, [currentSongId])
 
     return (
         <main className="main-page bg-dark">
             <GenresView global_state={global_state}/>
-            {(currentSongUrl) && (
-                <MusicPlayer currentSongUrl={currentSongUrl} />
+            {(currentSongId) && (
+                <MusicPlayer currentSongId={currentSongId} />
             )}
         </main>
     );

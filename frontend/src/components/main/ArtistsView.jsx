@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import global_vars from "../../config/global_vars";
 import AlbumsView from "./AlbumsView";
+import { BackspaceFill } from "react-bootstrap-icons";
 
 
 const ArtistsView = (props) => {
@@ -29,22 +30,27 @@ const ArtistsView = (props) => {
         <section class="genres-component">
             {selectedArtistId <= 0 && (
                 <>
-                    <p onClick={handleBackwardsAlbums}> -- Volver a generos</p>
+                    <p onClick={onBackwards} className="backwards-button"><BackspaceFill></BackspaceFill> -- Volver a generos</p>
                     <h1 class="genres-title">Los artistas del genero</h1>
-                    <div class="d-flex container flex-wrap justify-content-center align-items-center">
-                        {artistsList.map((artist) => (
-                            <div className="genre-item" key={artist.id} onClick={() => setSelectedArtistId(artist.id)}>
-                                <img src={global_vars.artists_files_path + artist.picture_path} className="img-fluid w-100" />
-                                <h3>{artist.name}</h3>
-                            </div>
-                        ))}
-                    </div>
-                    <button onClick={global_state.setCurrentSongUrl('http://localhost:3000/api/songs/8')}>Test global state</button>
+                    {(artistsList && artistsList.length > 0) ? (
+                        <div class="d-flex container flex-wrap justify-content-center align-items-center">
+                            {artistsList.map((artist) => (
+                                <div className="genre-item" key={artist.id} onClick={() => setSelectedArtistId(artist.id)}>
+                                    <img src={global_vars.artists_files_path + artist.picture_path} className="img-fluid w-100" />
+                                    <h3>{artist.name}</h3>
+                                </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="d-flex flex-column justify-content-center align-items-center">
+                            <h2>No hay artistas para este genero</h2>
+                        </div>
+                    )}
                 </>
             )}
 
             {selectedArtistId > 0 && (
-                <AlbumsView selectedArtistId={selectedArtistId} onBackwards={onBackwards}
+                <AlbumsView selectedArtistId={selectedArtistId} onBackwards={handleBackwardsAlbums}
                     global_state={global_state} />
             )}
         </section>

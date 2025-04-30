@@ -26,7 +26,8 @@ exports.getAllAlbumsByArtistId = async (req, res) => {
     const albums = await db.Albums.findAll({
         where: {
             artist_id: artistId
-        }
+        },
+        include : ['songs']
     });
 
     if (albums.length === 0) {

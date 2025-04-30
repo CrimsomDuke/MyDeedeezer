@@ -26,6 +26,10 @@
     height: 100vh;
 }
 
+.genres-component > *{
+    margin: 10px;
+}
+
 .genre-item{
     display: flex;
     flex-direction: column;
@@ -53,4 +57,63 @@
 .genre-item h3{
     padding: 10px;
     margin: 5px;
+}
+
+.backwards-button{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: transparent;
+    border: none;
+    color: azure;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.backwards-button:hover{
+    transform: scale(1.1);
+    color: cadetblue;
+}
+
+.album-item{
+    background-color: rgb(20, 21, 34);
+    width: 700px;
+    min-height: 150px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.album-item img{
+    margin-top: 5px;
+    border-radius: 20px;
+    max-width: 300px;
+    max-height: 400px;
+}
+
+.album-item:hover{
+    box-shadow: 0 0 60px rgba(1, 0, 120, 0.7);
+}
+
+.song-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    max-width: 700px;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.song-item:hover{
+    background-color: cadetblue;
 }

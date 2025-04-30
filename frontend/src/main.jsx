@@ -1,6 +1,5 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
 import GenresListView from './pages/admin/genres/GenresListView.jsx'
 import { BrowserRouter } from 'react-router'
 import { Route, Routes } from 'react-router'
@@ -12,6 +11,7 @@ import AlbumsForm from './pages/admin/albums/AlbumForm.jsx';
 import SongsListView from './pages/admin/songs/SongsListView.jsx';
 import SongsForm from './pages/admin/songs/SongsForm.jsx';
 import MainPage from './pages/main/MainPage.jsx';
+import './index.css'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

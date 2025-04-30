@@ -31,14 +31,20 @@ const GenresView = (props) => {
             {!selectedGenreId > 0 && (
                 <>
                     <h1 class="genres-title">Bienvenido a MyDeeDeezer, estos son nuestro generos</h1>
-                    <div class="d-flex container flex-wrap justify-content-center align-items-center">
-                        {genresList.map((genre) => (
-                            <div className="genre-item" onClick={() => setSelectedGenreId(genre.id)} key={genre.id}>
-                                <img src={global_vars.genres_files_path + genre.banner_path} className="img-fluid w-100" />
-                                <h3>{genre.name}</h3>
-                            </div>
-                        ))}
-                    </div>
+                    {(genresList && genresList.length > 0) ? (
+                        <div class="d-flex container flex-wrap justify-content-center align-items-center">
+                            {genresList.map((genre) => (
+                                <div className="genre-item" onClick={() => setSelectedGenreId(genre.id)} key={genre.id}>
+                                    <img src={global_vars.genres_files_path + genre.banner_path} className="img-fluid w-100" />
+                                    <h3>{genre.name}</h3>
+                                </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="d-flex flex-column justify-content-center align-items-center">
+                            <h2>No hay generos disponibles</h2>
+                        </div>
+                    )}
                 </>
             )}
 

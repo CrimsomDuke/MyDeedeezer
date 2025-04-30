@@ -4,7 +4,7 @@ import { PauseCircleFill, PlayCircleFill } from "react-bootstrap-icons";
 import global_vars from "../../config/global_vars";
 
 const MusicPlayer = (props) => {
-    const { currentSongUrl } = props;
+    const { currentSongId } = props;
 
     const [currentSongName, setCurrentSongName] = useState("");
     const [currentSongArtist, setCurrentSongArtist] = useState("");
@@ -17,12 +17,32 @@ const MusicPlayer = (props) => {
 
     //useEffect to fetch song data when currentSongUrl changes
     useEffect(() => {
-        console.log("Current song:", currentSongUrl);
-        fetchSongData();
-    }, [currentSongUrl]);
+        console.log("Current song:", currentSongId);
+
+        const fetchAndSetSongData = async () => {
+            await fetchSongData();
+        }
+        //POR ALGUNA RAZON QUE NO ENTIENDO, SI QUITO EL IF,
+        if (currentSongId) {
+            fetchAndSetSongData();
+        }
+    }, [currentSongId]);
+
+    //NECESITO ESTA MIERDA PARA EJECUTAR EL AUDIO CUANDO CAMBIA EL ID DE LA CANCIÓN
+    //ESTE USE_EFFECT OBSERVA LOS CAMBIOS EN currentSongFilePath Y currentSongName
+    //CUANDO CAMBIA, SE REPRODUCE LA CANCIÓN
+    useEffect(() => {
+        console.log('song', currentSongName);
+        //once the song is fetched, set the current song url to the audio player
+        if (audioControlsRef.current) {
+            audioControlsRef.current.src = global_vars.songs_files_path + currentSongFilePath;
+            audioControlsRef.current.play();
+        }
+    }, [currentSongFilePath, currentSongName])
 
     useEffect(() => {
         const audioControls = audioControlsRef.current;
+        console.log("Ejecute el 2do useEffect");
 
         const handleTimeUpdate = () => {
             const progress = getSongsProgress();
@@ -34,13 +54,15 @@ const MusicPlayer = (props) => {
 
         audioControls.addEventListener("timeupdate", handleTimeUpdate);
 
+        //the return function will be called when the component is unmounted
+        //or when the dependencies change
         return () => {
             audioControls.removeEventListener("timeupdate", handleTimeUpdate);
         }
     }, [])
 
     const fetchSongData = async () => {
-        const response = await fetch(currentSongUrl);
+        const response = await fetch(`${global_vars.api_url}/songs/${currentSongId}`);
         const data = await response.json();
 
         console.log("data:", data);
