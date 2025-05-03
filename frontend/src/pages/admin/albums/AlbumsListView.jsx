@@ -36,15 +36,17 @@ const AlbumsListView = () => {
                                     <th scope="col">Edit</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                {albumsList.map((album) => (
-                                    <tr>
-                                        <td>{album.id}</td>
-                                        <td>{album.album_name}</td>
-                                        <td><a className="btn btn-primary" href={`/admin/albums/form/${album.id}`}>Editar</a></td>
-                                    </tr>
-                                ))}
-                            </tbody>
+                            {albumsList.length > 0 && (
+                                <tbody>
+                                    {albumsList.map((album) => (
+                                        <tr>
+                                            <td>{album.id}</td>
+                                            <td>{album.album_name}</td>
+                                            <td><a className="btn btn-primary" href={`/admin/albums/form/${album.id}`}>Editar</a></td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            )}
                         </Table>
                     </Col>
                 </Row>

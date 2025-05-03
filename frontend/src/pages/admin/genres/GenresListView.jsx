@@ -3,7 +3,7 @@ import CustomNavbar from "../../../components/admin/CustomNavbar"
 import { Link } from "react-router"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useEffect, useState } from "react"
-import  global_vars  from '../../../config/global_vars.js'
+import global_vars from '../../../config/global_vars.js'
 
 
 const GenresListView = () => {
@@ -37,15 +37,19 @@ const GenresListView = () => {
                                     <th scope="col">Edit</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                {genresList.map((genresList) => (
-                                    <tr>
-                                        <td>{genresList.id}</td>
-                                        <td>{genresList.name}</td>
-                                        <td><a className="btn btn-primary" href={`/admin/genres/form/${genresList.id}`}>Editar</a></td>
-                                    </tr>
-                                ))}
-                            </tbody>
+                            {genresList.length > 0 && (
+                                <tbody>
+                                    {genresList.map((genre) => (
+                                        <tr key={genre.id}>
+                                            <td>{genre.id}</td>
+                                            <td>{genre.name}</td>
+                                            <td>
+                                                <Link to={`/admin/genres/form/${genre.id}`} className="btn btn-primary">Edit</Link>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            )}
                         </Table>
                     </Col>
                 </Row>

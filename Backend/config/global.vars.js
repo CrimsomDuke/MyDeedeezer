@@ -1,4 +1,4 @@
 
 module.exports = {
-    upload_folder : "C:/Users/PC/Desktop/CrimsomDuke/tareas/Semestre_7/web_II/practicos/MyDeedeezer/uploads"
+    upload_folder : "C:/Users/Usuario/Desktop/CrimsomDuke/UNIVERSIDAD/Semestre_7/Web_II/MyDeedeezer/uploads"
 }

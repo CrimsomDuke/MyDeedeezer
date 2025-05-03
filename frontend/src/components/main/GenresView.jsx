@@ -49,8 +49,10 @@ const GenresView = (props) => {
             )}
 
             {selectedGenreId > 0 && (
-                <ArtistsView selectedGenreId={selectedGenreId} onBackwards={handleBackwardsArtists}
-                    global_state={global_state} />
+                <div className="content-wrapper">
+                    <ArtistsView selectedGenreId={selectedGenreId} onBackwards={handleBackwardsArtists}
+                        global_state={global_state} />
+                </div>
             )}
         </section>
     )

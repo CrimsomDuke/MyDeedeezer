@@ -50,8 +50,10 @@ const ArtistsView = (props) => {
             )}
 
             {selectedArtistId > 0 && (
-                <AlbumsView selectedArtistId={selectedArtistId} onBackwards={handleBackwardsAlbums}
-                    global_state={global_state} />
+                <div className="content-wrapper">
+                    <AlbumsView selectedArtistId={selectedArtistId} onBackwards={handleBackwardsAlbums}
+                        global_state={global_state} />
+                </div>
             )}
         </section>
     )

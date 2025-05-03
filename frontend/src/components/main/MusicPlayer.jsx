@@ -114,7 +114,7 @@ const MusicPlayer = (props) => {
 
     return (
         <>
-            <section className="music-player p-3">
+            <section className="music-player p-2">
                 <Row>
                     <Col className="col-sm-2">
                         <h3>{currentSongName}</h3>

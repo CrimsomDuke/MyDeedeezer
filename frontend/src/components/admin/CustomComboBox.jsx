@@ -20,7 +20,7 @@ const CustomComboBox = (props) => {
                 disabled={disabled}
                 required={required}
             >
-                {dataSource.map((item) => (
+                {dataSource.length > 0 && dataSource.map((item) => (
                     <option key={item[valueField]} value={item[valueField]}>
                         {item[textField]}
                     </option>

@@ -23,39 +23,46 @@ const AlbumsView = (props) => {
 
 
     return (
-        <section class="genres-component">
-            <>
-                <p onClick={onBackwards} className="backwards-button"><BackspaceFill></BackspaceFill> -- Volver a Artistas</p>
-                <h1 class="genres-title">Albumes del artista:</h1>
-                {(albumsList && albumsList.length > 0) ? (
-                    <div class="d-flex container flex-wrap justify-content-center align-items-center">
-                        {albumsList.map((album) => (
-                            <div className="row album-item" key={album.id}>
-                                <div className="col-sm-4">
-                                    <img src={global_vars.albums_files_path + album.picture_path} className="img-fluid w-100" />
-                                </div>
-                                <div className="col-sm-8">
-                                    <h2>{album.album_name}</h2>
-                                    <div className="d-flex flex-column justify-content-center">
-                                        {album.songs.length <= 0 && (
-                                            <p className="text-center">No hay canciones en este album</p>
-                                        )}
-                                        {album.songs.map((song) => (
-                                            <div className="song-item" key={song.id} onClick={() => global_state.setCurrentSongId(song.id)}>
-                                                <h5>{song.song_name}</h5>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
+        <section className="text-white pt-5 mt-5">
+            <p onClick={onBackwards} className="backwards-button">
+                <BackspaceFill /> Volver a Artistas
+            </p>
+
+            <h1 className="genres-title text-center mb-4">Álbumes del Artista</h1>
+
+            {(albumsList && albumsList.length > 0) ? (
+                <div className="container d-flex flex-wrap justify-content-center mt-5 pt-5">
+                    {albumsList.map((album) => (
+                        <div className="album-card" key={album.id}>
+                            <img
+                                src={global_vars.albums_files_path + album.picture_path}
+                                alt={album.album_name}
+                                className="album-cover w-100"
+                            />
+                            <div className="album-details">
+                                <h4>{album.album_name}</h4>
+                                {album.songs.length <= 0 ? (
+                                    <p className="text-muted">No hay canciones en este álbum.</p>
+                                ) : (
+                                    album.songs.map((song) => (
+                                        <div
+                                            className="song-item"
+                                            key={song.id}
+                                            onClick={() => global_state.setCurrentSongId(song.id)}
+                                        >
+                                            {song.song_name}
+                                        </div>
+                                    ))
+                                )}
                             </div>
-                        ))}
-                    </div>
-                ) : (
-                    <div className="d-flex flex-column justify-content-center align-items-center">
-                        <h2>No hay albumes para este artista</h2>
-                    </div>
-                )}
-            </>
+                        </div>
+                    ))}
+                </div>
+            ) : (
+                <div className="text-center mt-5">
+                    <h2>No hay álbumes para este artista.</h2>
+                </div>
+            )}
         </section>
     )
 }

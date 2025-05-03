@@ -35,15 +35,19 @@ const ArtistsListView = () => {
                                     <th scope="col">Editar</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                {artistsList.map((genresList) => (
-                                    <tr>
-                                        <td>{genresList.id}</td>
-                                        <td>{genresList.name}</td>
-                                        <td><a className="btn btn-primary" href={`/admin/artists/form/${genresList.id}`}>Editar</a></td>
-                                    </tr>
-                                ))}
-                            </tbody>
+                            {artistsList.length > 0 && (
+                                <tbody>
+                                    {artistsList.map((artist) => (
+                                        <tr key={artist.id}>
+                                            <td>{artist.id}</td>
+                                            <td>{artist.name}</td>
+                                            <td>
+                                                <a className="btn btn-primary" href={`/admin/artists/form/${artist.id}`}>Editar</a>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            )}
                         </Table>
                     </Col>
                 </Row>

@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import MusicPlayer from '../../components/main/MusicPlayer';
 import '../../index.css'
-import GenresView from '../../components/main/GenresView';'../../components/main/GenresView'
+import GenresView from '../../components/main/GenresView'; '../../components/main/GenresView'
 
 const MainPage = () => {
 
@@ -19,10 +19,12 @@ const MainPage = () => {
 
     return (
         <main className="main-page bg-dark">
-            <GenresView global_state={global_state}/>
-            {(currentSongId) && (
-                <MusicPlayer currentSongId={currentSongId} />
-            )}
+            <div className='content-wrapper'>
+                <GenresView global_state={global_state} />
+                {(currentSongId) && (
+                    <MusicPlayer currentSongId={currentSongId} />
+                )}
+            </div>
         </main>
     );
 }
