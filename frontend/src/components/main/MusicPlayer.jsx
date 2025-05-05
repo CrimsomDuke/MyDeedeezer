@@ -23,9 +23,7 @@ const MusicPlayer = (props) => {
             await fetchSongData();
         }
         //POR ALGUNA RAZON QUE NO ENTIENDO, SI QUITO EL IF,
-        if (currentSongId) {
-            fetchAndSetSongData();
-        }
+        fetchAndSetSongData();
     }, [currentSongId]);
 
     //NECESITO ESTA MIERDA PARA EJECUTAR EL AUDIO CUANDO CAMBIA EL ID DE LA CANCIÓN

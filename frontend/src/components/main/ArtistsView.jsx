@@ -27,7 +27,7 @@ const ArtistsView = (props) => {
     }
 
     return (
-        <section class="genres-component">
+        <section class="genres-component container">
             {selectedArtistId <= 0 && (
                 <>
                     <p onClick={onBackwards} className="backwards-button"><BackspaceFill></BackspaceFill> -- Volver a generos</p>

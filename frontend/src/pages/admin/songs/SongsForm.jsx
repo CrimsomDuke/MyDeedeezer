@@ -160,7 +160,7 @@ const SongsForm = () => {
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label>Song</Form.Label>
-                                        <Form.Control type="file" placeholder="Song"
+                                        <Form.Control type="file" placeholder="Song" accept="audio/*"
                                             onChange={(e) => setSongFile(e.target.files[0])} required={!id} />
                                         {(songFile) && (
                                             <audio controls className="m-3">
